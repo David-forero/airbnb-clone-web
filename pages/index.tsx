@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { title } from "process";
 
 import Banner from "../components/Banner";
 import Footer from "../components/Footer";
@@ -15,6 +14,7 @@ const Home: NextPage = ({ exploreData, cardsData }: any) => {
       <Head>
         <title>Airbnb clone by David Forero</title>
         <link rel="icon" href="/favicon.ico" />
+        <script src='https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js' />
       </Head>
 
       {/* HEADER */}
@@ -47,6 +47,7 @@ const Home: NextPage = ({ exploreData, cardsData }: any) => {
             ))}
           </div>
         </section>
+
 
         <LargeCard
           img={"https://links.papareact.com/4cj"}
