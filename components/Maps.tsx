@@ -3,14 +3,17 @@ import ReactMapGL, { Marker, Popup} from "react-map-gl";
 import getCenter from "geolib/es/getCenter";
 
 const Maps = ({searchResults}: any) => {
-  const [selectedLocation, setSelectedLocation] = useState({});
+  const [selectedLocation, setSelectedLocation] = useState({
+    long: 0,
+    lat: 0
+  });
 
   const coordinates = searchResults.map((result: any) => ({
     longitude: result.long,
     latitude: result.lat
   }));
 
-  const center = getCenter(coordinates);
+  const center: {longitude: number, latitude: number} | any = getCenter(coordinates);
 
   const [viewport, setViewport] = useState({
     width: "100%",
@@ -33,8 +36,8 @@ const Maps = ({searchResults}: any) => {
           <Marker
             longitude={result.long}
             latitude={result.lat}
-            offsetLeft={-20}
-            offsetTop={-10}
+            // offsetLeft={-20}
+            // offsetTop={-10}
           >
             <p
               onClick={() => setSelectedLocation(result)}
@@ -50,7 +53,10 @@ const Maps = ({searchResults}: any) => {
             selectedLocation.long === result.long ? (
               <Popup
                 closeOnClick={true}
-                onClose={() => setSelectedLocation({})}
+                onClose={() => setSelectedLocation({
+                  long: 0,
+                  lat: 0
+                })}
                 longitude={result.long}
                 latitude={result.lat}
               >

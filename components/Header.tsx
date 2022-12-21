@@ -20,7 +20,7 @@ const Header = ({placeholder}: any) => {
   const router = useRouter();
 
   const selectionRange = {
-    startRange: startDate,
+    startDate: startDate,
     endDate: endDate,
     key: "selection",
   };
@@ -30,8 +30,6 @@ const Header = ({placeholder}: any) => {
   };
 
   const search = () => {
-    console.log('funca');
-    
     router.push({
       pathname: '/search',
       query: {
@@ -44,6 +42,8 @@ const Header = ({placeholder}: any) => {
   };
 
   const handleSelect = (ranges: any) => {
+    console.log(ranges.selection, '=======',ranges.selection.endDate);
+    
     setStartDate(ranges.selection.startDate);
     setEndDate(ranges.selection.endDate);
   };
